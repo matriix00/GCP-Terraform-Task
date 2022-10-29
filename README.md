@@ -6,7 +6,7 @@ Provision GCP infrstructure using Terraform , Docker, Kubernetes.
 ![Image](./task.png)
 ## Cloning this project
 ```bash
-$ git clone https://github.com/matriix00/
+$ git clone https://github.com/matriix00/GCP-Terraform-Task.git
 ```
 
 ##  Provision  GCP with Terraform
