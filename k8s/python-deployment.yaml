@@ -1,0 +1,68 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+        app: python-app
+        tier: frontend
+  template:
+    metadata:
+      labels:
+        app: python-app
+        tier: frontend
+    spec:
+      containers:
+      - name: python-application
+        image: gcr.io/omarmagdy/python-app
+        env:
+        - name: ENVIRONMENT
+          valueFrom:  
+            configMapKeyRef:
+              name: python-config-map        
+              key: ENVIRONMENT
+        - name: HOST
+          valueFrom:  
+            configMapKeyRef:
+              name: python-config-map        
+              key: HOST
+        - name: PORT
+          valueFrom:  
+            configMapKeyRef:
+              name: python-config-map        
+              key: PORT
+        - name: REDIS_HOST
+          valueFrom:  
+            configMapKeyRef:
+              name: python-config-map        
+              key: REDIS_HOST
+        - name: REDIS_PORT
+          valueFrom:  
+            configMapKeyRef:
+              name: python-config-map        
+              key: REDIS_PORT
+        - name: REDIS_DB
+          valueFrom:  
+            configMapKeyRef:
+              name: python-config-map        
+              key: REDIS_DB
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend
+  labels:
+    app: python-app
+    tier: frontend
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+    targetPort: 80
+  selector:
+    app: python-app
+    tier: frontend
