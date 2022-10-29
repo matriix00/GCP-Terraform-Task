@@ -30,7 +30,7 @@ $ terraform apply -auto-apprvove
 2- [Installed and configured Docker ](https://cloud.google.com/container-registry/docs/advanced-authentication).
 
 ```bash
-$ docker build /Devops-Code/ -t simple-image
+$ docker build Devops-Code/ -t simple-image
 $ docker tag simple-image gcr.io/omarmagdy/python-app
 $ docker push gcr.io/omarmagdy/python-app
 ```
