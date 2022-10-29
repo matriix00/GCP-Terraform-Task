@@ -48,6 +48,10 @@ $ kubectl apply -f config.yaml
 $ kubectl apply -f redis.yaml
 $ kubectl apply -f python-deployment.yaml
 ```
+## Clean 
+```bash
+$ terraform destroy -auto-apprvove
+```
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
